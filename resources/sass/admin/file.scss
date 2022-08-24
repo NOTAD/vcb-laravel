@@ -1,0 +1,192 @@
+.el-upload__input { // Fix when conflict with bootstrap
+    display: none !important;
+}
+
+.file-manager {
+    a {
+        color: #337ab7 !important;
+    }
+    .file-dialog, .delete-dialog {
+        .el-dialog {
+            width: 40%;
+            max-width: 500px !important;
+        }
+    }
+
+    margin: 10px;
+
+    .left {
+        float: left;
+    }
+
+    .right {
+        float: right;
+    }
+
+    .flex-column {
+        display: flex;
+    }
+
+    .btn-upload {
+        float: left;
+        margin-right: 10px;
+    }
+
+    .resize-input {
+        width: 100px;
+    }
+
+    .crop-area {
+        width: 765px;
+        height: 450px;
+        float: left;
+        background: #FFF;
+    }
+
+    .info-area {
+        width: 200px;
+        height: 200px;
+        float: left;
+        padding: 5px;
+    }
+
+    .preview {
+        width: 200px;
+        height: 200px;
+        float: left;
+    }
+
+    .card-crop {
+        width: 1000px;
+    }
+    .no-mr-left {
+        margin-left: 0;
+    }
+    .no-pd-left {
+        padding-left: 0;
+    }
+    .image-item {
+        position: relative;
+        margin: 10px 10px 10px 0;
+        padding: 0;
+        width: $imageThumbnailSize;
+        height: $imageThumbnailSize;
+        min-width: 225px;
+        min-height: 225px;
+        float: left;
+        text-align: center;
+
+        .select-area {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+        .el-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: $imageThumbnailSize;
+            height: $imageThumbnailSize;
+            min-width: 225px;
+            min-height: 225px;
+            cursor: pointer;
+        }
+
+        .image-button {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            display: none;
+
+        }
+        .folder-name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            background: #FFF;
+            color: black;
+            font-weight: bold;
+        }
+        .size-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 70px;
+            background: #FFF;
+            color: black;
+            font-weight: bold;
+            display: none;
+        }
+
+        .time-item {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 130px;
+            background: #FFF;
+            color: black;
+            font-weight: bold;
+            display: none;
+        }
+    }
+
+    .image-item:hover .image-button, .time-item, .size-item {
+        display: block;
+    }
+
+    .image-item:hover .time-item {
+        display: block;
+    }
+
+    .image-item:hover .size-item {
+        display: block;
+    }
+
+    .fixed-area {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 1080;
+        display: flex;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .file-manager {
+
+        .file-dialog, .delete-dialog {
+            .el-dialog {
+                width: 70%;
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 450px) {
+    .file-manager {
+
+        .file-dialog, .delete-dialog {
+            .el-dialog {
+                width: 100%;
+            }
+        }
+
+        .btn-auto-small {
+            button {
+                span {
+                    display: none;
+                }
+            }
+        }
+
+        .right {
+            display: flex;
+            float: none;
+        }
+
+    }
+}

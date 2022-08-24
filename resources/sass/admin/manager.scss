@@ -1,0 +1,221 @@
+.manager-screen {
+    a {
+        color: green !important;
+    }
+
+    .pagination {
+        width: 100%;
+        text-align: right;
+    }
+
+    .el-header {
+        height: auto !important;
+    }
+
+    .mr-clear {
+        margin-bottom: 30px;
+    }
+
+    .separate {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .left {
+        float: left;
+    }
+
+    .right {
+        float: right;
+    }
+
+    .search {
+        width: 200px;
+    }
+
+    .image-item {
+        position: relative;
+
+        .el-image {
+            border: 1px solid #ddd;
+        }
+
+        .image-button {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        i {
+            font-size: 2rem;
+        }
+    }
+
+    .image-select {
+        cursor: pointer;
+        max-width: 200px;
+    }
+
+    .thumbnail {
+        width: 100%;
+    }
+
+    .price {
+        width: 225px;
+    }
+
+    .action-button {
+        margin-left: 0;
+    }
+
+    .delete-dialog {
+        .el-dialog {
+            width: 40%;
+            max-width: 500px !important;
+        }
+    }
+
+
+    .form-dialog {
+        .el-form {
+            padding: 20px 10px;
+        }
+
+        .el-transfer-panel {
+            width: 40%;
+        }
+        .el-transfer__buttons {
+            width: 20%;
+        }
+        .el-input, .el-textarea, .el-select {
+            width: 100%;
+        }
+
+        .input-with-btn {
+            width: 80%;
+        }
+
+        .submit-area {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .el-dialog {
+            width: 70%;
+        }
+
+        .el-checkbox__label {
+            overflow: inherit;
+            text-overflow: inherit;
+        }
+    }
+
+    .list-break-line {
+        label {
+            margin-left: 0 !important;
+            width: 100%;
+        }
+    }
+
+    .list-tags {
+        .el-tag + .el-tag {
+            margin-left: 10px;
+        }
+    }
+
+    .inventories-list {
+        padding-left: 0;
+        max-width: 500px;
+    }
+
+}
+
+.v-modal {
+    display:none;
+}
+
+@media only screen and (max-width: 1225px) {
+    .manager-screen {
+        .form-dialog {
+            .el-transfer-panel {
+                width: 100% !important;
+            }
+
+            .el-transfer__buttons {
+                padding: 10px;
+                width: 100%;
+
+                .el-button {
+                    margin: 0 auto;
+                }
+            }
+
+        }
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .manager-screen {
+        .search {
+            width: 150px;
+        }
+
+        .delete-dialog {
+            .el-dialog {
+                width: 70%;
+            }
+        }
+
+        .form-dialog {
+            .el-dialog {
+                width: 100% !important;
+            }
+
+        }
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .manager-screen {
+        .search {
+            width: 100%;
+        }
+
+        .delete-dialog {
+            .el-dialog {
+                width: 100%;
+            }
+        }
+
+        .form-dialog {
+            .el-form-item__content {
+                margin-left: 0 !important;
+            }
+        }
+
+        .left {
+            float: none;
+            width: 100%;
+
+            button {
+                span {
+                    display: none;
+                }
+            }
+        }
+
+        .right {
+            float: none;
+            width: 100%;
+
+            .el-input, button {
+                margin-top: 10px;
+            }
+        }
+
+        .el-main {
+            margin-top: 20px;
+        }
+    }
+}

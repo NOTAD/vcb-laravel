@@ -1,0 +1,94 @@
+.wrap-body{
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 999;
+    height: 100%;
+    padding-top: 40px;
+    padding-bottom: 30px;
+    .main-content{
+        height: 100%;
+        flex-direction: column;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #fff;
+        &__title{
+            
+            h2{
+                font-size: 13px;
+                font-weight: 100;
+                letter-spacing: .9em;
+                white-space: nowrap;
+            }
+            
+        }
+        &__logo{
+            width: 150px;
+            margin: 0 auto;
+        }
+        &__button{
+            margin-top: 50px;
+            display: flex;
+
+        }
+        &__social{
+
+            display: flex;
+
+            a{
+                margin-right: 15px;
+                font-size: 18px;
+                color: #fff;
+                transition: all .5s;
+                &:hover{
+                    color: #a19b9a;
+                }
+            }
+        }
+    }
+}
+
+.slider-show{
+    background-color: grey;
+    height: 100%;
+
+    .slick-list{
+        height: 100%;
+
+        .slick-track{
+            height: 100%;
+
+            img{
+                object-position: 50% 50%;
+                object-fit: cover;
+            }
+        }
+    }
+}
+.btn-main{
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 7px 15px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.5s;
+
+    &:hover{
+        color: #333;
+        background: #fff;
+    }
+}
+.text-title{
+    font-size: 20px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #fff;
+    height: 30px;
+    // @include respond(mini-phone){
+    //     text-align: center;
+    // }
+}

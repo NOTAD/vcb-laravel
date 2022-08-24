@@ -1,0 +1,3 @@
+[submodule "public/template"]
+	path = public/template
+	url = git@gitlab.com:thainph/dzus-template.git

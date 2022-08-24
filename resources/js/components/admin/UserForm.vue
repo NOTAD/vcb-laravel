@@ -1,0 +1,156 @@
+<template>
+    <el-form
+        ref="form"
+        :model="form"
+        label-position="left"
+        label-width="120px"
+    >
+        <el-form-item :label="$t('admin.common.name')">
+            <el-input
+                v-model="form.name"
+                maxlength="255"
+                show-word-limit
+            ></el-input>
+        </el-form-item>
+        <el-form-item :label="$t('admin.common.email')">
+            <el-input
+                v-model="form.email"
+                maxlength="255"
+                show-word-limit
+            ></el-input>
+        </el-form-item>
+        <el-form-item :label="$t('admin.common.phone')">
+            <el-input
+                v-model="form.phone"
+                maxlength="255"
+                show-word-limit
+            ></el-input>
+        </el-form-item>
+        <el-form-item :label="$t('admin.common.player')">
+            <el-switch
+                v-model="form.is_player"
+            >
+            </el-switch>
+        </el-form-item>
+        <el-form-item :label="$t('admin.common.image')">
+            <image-selector
+                :selector-id="'image'"
+                :source="form.image"
+                :on-select="handleSelectImage"
+            />
+        </el-form-item>
+        <el-form-item>
+            <el-button
+                type="success"
+                @click="handleSubmit"
+            >
+                {{ $t('admin.common.save') }}
+            </el-button>
+            <el-button
+                @click="onCancel"
+            >
+                {{ $t('admin.common.cancel') }}
+            </el-button>
+        </el-form-item>
+    </el-form>
+</template>
+<script>
+    import ImageSelector from "./ImageSelector";
+
+    export default {
+        components: { ImageSelector },
+        props: {
+            target: {
+                Type: Object,
+                default() {
+                    return {};
+                },
+            },
+            onSuccess: {
+                type: Function,
+                default() {
+                    return null;
+                }
+            },
+            onCancel: {
+                type: Function,
+                default() {
+                    return null;
+                }
+            },
+        },
+        data() {
+            return {
+                form: {},
+                mode: '',
+            };
+        },
+        created() {
+            this.initForm(this.target);
+            this.initImage();
+        },
+        watch: {
+            target(data) {
+                this.initForm(data);
+                this.initImage();
+            },
+        },
+        methods: {
+            initForm(data) {
+                this.form = this._.clone(data);
+                this.mode = this._.isEmpty(data) ? 'create' : 'edit';
+                this.form.is_player = this.form.is_player.toString() === '1' || this.form.is_player;
+            },
+            initImage() {
+                if(this._.isEmpty(this.form.image)) {
+                    this.form.image = '/images/admin/no-img.jpg';
+                }
+            },
+            handleSelectImage(image) {
+                if(!this._.isEmpty(image)) {
+                    this.form.image = image;
+                }
+            },
+
+            async handleSubmit() {
+                const loading = this.$loading({
+                    lock: true,
+                    text: 'Loading',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.7)'
+                });
+                try {
+                    const uri = (this.mode === 'edit')
+                        ? this.route('admin.ajax_update_user', { user: this.form.id})
+                        : this.route('admin.ajax_create_user');
+                    const response = (this.mode === 'edit')
+                        ? await this.Request.patch(uri, this.form)
+                        : await this.Request.post(uri, this.form);
+                    this.onSuccess(response.data, this.mode);
+                    this.resetForm();
+                    this.$notify({
+                        type: 'success',
+                        title: this.$t('admin.common.success'),
+                        message: (this.mode === 'edit') ? this.$t('admin.common.updated') : this.$t('admin.common.created'),
+                    });
+                } catch (e) {
+                    console.log(e); // eslint-disable-line
+                    const errorMessages = this.Request.errors(e.response);
+                    this.$notify({
+                        type: 'error',
+                        title: this.$t('admin.common.error'),
+                        message: this._.isEmpty(errorMessages) ? this.$t('admin.common.unknown_error') : errorMessages[0],
+                    });
+                }
+                loading.close();
+            },
+            handleCancel() {
+                this.resetForm();
+                this.onCancel();
+            },
+            resetForm() {
+                this.$refs['form'].resetFields();
+            },
+        },
+    }
+</script>
